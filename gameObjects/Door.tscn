@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/room/door_close_a.png" type="Texture" id=1]
+[ext_resource path="res://assets/room001.png" type="Texture" id=2]
+
+[node name="Door" type="Node2D"]
+
+[node name="Sprite2" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.4 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3, 1.99999 )
+scale = Vector2( 0.233264, 0.233264 )
+texture = ExtResource( 1 )
