@@ -5,6 +5,7 @@ var room_size = Vector2(200,150)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SlatsManager._init_slat_manager(self)
 	MapGenerator.generate_new_map(30,false)
 	for room_name in MapGenerator.rooms:
 		var room_data = MapGenerator.rooms[room_name]

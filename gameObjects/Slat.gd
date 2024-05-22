@@ -8,6 +8,7 @@ func set_slat(_type):
 	$TextureRect.texture = load("res://assets/dices/"+type+".png")
 
 func _ready():
+	rect_global_position = get_viewport_rect().size/2
 	roll()
 
 func roll():
@@ -18,17 +19,20 @@ func roll():
 	else: modulate = Color(.4,.4,.4,0)
 	var slow = randf()*0.2
 	$Tween.interpolate_property(self,"modulate:a",0,1,.4+slow,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	
-	var start_pos = get_viewport_rect().size/2
-	var end_pos = start_pos + Vector2(rand_range(-100,100),rand_range(-100,100))
-	$Tween.interpolate_property(self,"rect_global_position",start_pos,end_pos,.3+slow,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	var end_pos = get_viewport_rect().size/2 + Vector2(rand_range(-100,100),rand_range(-100,100))
+	$Tween.interpolate_property(self,"rect_global_position",rect_global_position,end_pos,.3+slow,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	
 	$Tween.start()
 
-func goto_file(index):
-	var end_pos = get_viewport_rect().size * Vector2(.5,.8)
-	if isValid: end_pos.x -= 200
-	else: end_pos.x += 200
-	end_pos.x += index*20
+func goto_pos(end_pos):
 	$Tween.interpolate_property(self,"rect_global_position",rect_global_position,end_pos,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	$Tween.start()
+
+func consume():
+	isValid = false
+	$Tween.interpolate_property(self,"rect_global_position",rect_global_position,rect_global_position+Vector2(0,-100),.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property(self,"modulate:a",1,0,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween,"tween_completed")
+	get_parent().remove_child(self)
+	queue_free()

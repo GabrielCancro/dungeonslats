@@ -22,3 +22,11 @@ margin_right = 1244.0
 margin_bottom = 68.0
 custom_fonts/font = SubResource( 1 )
 text = "LANZAR"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 1060.0
+margin_top = 100.0
+margin_right = 1244.0
+margin_bottom = 148.0
+custom_fonts/font = SubResource( 1 )
+text = "RE LANZAR"
