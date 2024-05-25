@@ -21,6 +21,7 @@ Utils="*res://autoloads/utils.gd"
 SlatsManager="*res://autoloads/slatsManager.gd"
 PlayerManager="*res://autoloads/playerManager.gd"
 EffectManager="*res://autoloads/effectManager.gd"
+DefianceManager="*res://autoloads/defianceManager.gd"
 
 [display]
 

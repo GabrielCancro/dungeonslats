@@ -54,7 +54,7 @@ func create_new_room(x,y):
 		"is_explored":false,
 		"room_ref":null,
 		"state":"unexplored", #unexplored, ask, danger, safe
-		"tokens": null, #CardManager.get_four_random_cards(),
+		"defiances": [ {"type":"enemy", "lv":3, "actions":[ {"name":"attack","req":{"SW":3} }, {"name":"evade","req":{"BT":2} } ] } ],
 		"items": null, #ItemManager.get_some_items()
 	}
 	if (x==0 && y==0):

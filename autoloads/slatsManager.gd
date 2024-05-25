@@ -22,8 +22,17 @@ func assign_slat(type):
 	var slat = SLATTER.get_valid_slat(type)
 	if slat:
 		slat.consume()
+		SLATTER.valid_slats[slat.type] -= 1
 		return true
 	return false
+
+func consume_slats(req):
+	for k in req.keys():
+		if SLATTER.valid_slats[k]<req[k]: return false
+	for k in req.keys():
+		for i in range(req[k]):
+			assign_slat(k)
+	return true
 
 func get_color(type):
 	return SLAT_COLORS[type]
