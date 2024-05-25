@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SW.png-74ebb998d8e2410c35c7cd24494c9e1c.stex"
+path="res://.import/EY.png-998034bb616454e341732aaeed045504.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dices/SW.png"
-dest_files=[ "res://.import/SW.png-74ebb998d8e2410c35c7cd24494c9e1c.stex" ]
+source_file="res://assets/slats/EY.png"
+dest_files=[ "res://.import/EY.png-998034bb616454e341732aaeed045504.stex" ]
 
 [params]
 

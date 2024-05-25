@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BT.png-d94f40bfd6c63a1d0e51ecb92cd1910a.stex"
+path="res://.import/GR.png-8f56de0c3ce027c37619a0f237f5949b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dices/BT.png"
-dest_files=[ "res://.import/BT.png-d94f40bfd6c63a1d0e51ecb92cd1910a.stex" ]
+source_file="res://assets/slats/GR.png"
+dest_files=[ "res://.import/GR.png-8f56de0c3ce027c37619a0f237f5949b.stex" ]
 
 [params]
 

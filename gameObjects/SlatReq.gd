@@ -7,7 +7,8 @@ var is_complete = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$TextureRect.texture = load("res://assets/dices/"+type+".png")
+	$TextureRect.texture = load("res://assets/slats/"+type+".png")
+	$TextureRect.modulate = SlatsManager.get_color(type)
 	$Button.connect("button_down",self,"on_click")
 	update()
 

@@ -5,7 +5,7 @@ var isValid = false
 
 func set_slat(_type):
 	type = _type
-	$TextureRect.texture = load("res://assets/dices/"+type+".png")
+	$TextureRect.texture = load("res://assets/slats/"+type+".png")
 
 func _ready():
 	rect_global_position = get_viewport_rect().size/2
@@ -15,7 +15,7 @@ func roll():
 	randomize()
 	isValid = (randi()%100<50)
 	print(isValid)
-	if isValid: modulate = Color(1,1,1,0)
+	if isValid: modulate = SlatsManager.get_color(type)
 	else: modulate = Color(.4,.4,.4,0)
 	var slow = randf()*0.2
 	$Tween.interpolate_property(self,"modulate:a",0,1,.4+slow,Tween.TRANS_QUAD,Tween.EASE_OUT)
