@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tk_trap.png-48fd4c1b8d0c6c14bd8cb3110b955df0.stex"
+path="res://.import/VDoor.png-f4515949edbf496c60f6cb544f2ef5ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/room/tk_trap.png"
-dest_files=[ "res://.import/tk_trap.png-48fd4c1b8d0c6c14bd8cb3110b955df0.stex" ]
+source_file="res://assets/room/VDoor.png"
+dest_files=[ "res://.import/VDoor.png-f4515949edbf496c60f6cb544f2ef5ef.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

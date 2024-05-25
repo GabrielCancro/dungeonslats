@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tk_enemy.png-459da20cdbaabfe952053a4ef6135d4b.stex"
+path="res://.import/empty_room.png-575141d5b6d4b348d51345c765178518.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/room/tk_enemy.png"
-dest_files=[ "res://.import/tk_enemy.png-459da20cdbaabfe952053a4ef6135d4b.stex" ]
+source_file="res://assets/room/empty_room.png"
+dest_files=[ "res://.import/empty_room.png-575141d5b6d4b348d51345c765178518.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
