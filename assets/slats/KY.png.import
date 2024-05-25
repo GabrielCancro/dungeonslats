@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PT.png-b7a07a2f25196dc8c1578ff908c3c369.stex"
+path="res://.import/KY.png-c2ae2150ad50c4070c2c02486b44e493.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dices/PT.png"
-dest_files=[ "res://.import/PT.png-b7a07a2f25196dc8c1578ff908c3c369.stex" ]
+source_file="res://assets/slats/KY.png"
+dest_files=[ "res://.import/KY.png-c2ae2150ad50c4070c2c02486b44e493.stex" ]
 
 [params]
 

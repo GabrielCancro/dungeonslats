@@ -16,7 +16,7 @@ margin_bottom = 20.0
 [node name="Slatter" parent="." instance=ExtResource( 2 )]
 
 [node name="SlatReq" parent="." instance=ExtResource( 3 )]
-margin_left = 197.0
-margin_top = 102.0
-margin_right = 197.0
-margin_bottom = 102.0
+margin_left = 291.0
+margin_top = 89.0
+margin_right = 291.0
+margin_bottom = 89.0

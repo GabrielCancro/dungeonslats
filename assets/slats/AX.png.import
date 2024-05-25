@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EY.png-23068201cc60cd9e3c95eed132df049f.stex"
+path="res://.import/AX.png-307d14dd1d0a5c77667c122c38918a5a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dices/EY.png"
-dest_files=[ "res://.import/EY.png-23068201cc60cd9e3c95eed132df049f.stex" ]
+source_file="res://assets/slats/AX.png"
+dest_files=[ "res://.import/AX.png-307d14dd1d0a5c77667c122c38918a5a.stex" ]
 
 [params]
 

@@ -1,6 +1,6 @@
 extends Control
 
-var slats = {"SW":4, "HN":4, "EY":4, "BT":4, "SC":4}
+var slats = {"SW":4, "GR":4, "EY":4, "BT":4, "SC":4}
 var is_rolling = false
 
 # Called when the node enters the scene tree for the first time.
