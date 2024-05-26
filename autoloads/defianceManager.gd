@@ -19,4 +19,3 @@ func on_click_action(action_data):
 func ac_enemy_attack(action_data):
 	print("CALL AN ACTION FUNCTION --> ac_enemy_attack")
 	EffectManager.shake(action_data.defiance_data.node_ref)
-	
