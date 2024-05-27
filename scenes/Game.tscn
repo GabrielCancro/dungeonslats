@@ -23,6 +23,7 @@ color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+smoothing_enabled = true
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -34,9 +35,10 @@ margin_bottom = 67.0
 
 [node name="CanvasLayerUI" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayerUI"]
-margin_right = 87.0
-margin_bottom = 32.0
+[node name="BtnEndTurn" type="Button" parent="CanvasLayerUI"]
+margin_right = 172.0
+margin_bottom = 53.0
+text = "END TURN"
 
 [node name="Slatter" parent="CanvasLayerUI" instance=ExtResource( 2 )]
 anchor_left = 1.0

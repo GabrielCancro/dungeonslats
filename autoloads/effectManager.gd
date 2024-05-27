@@ -52,3 +52,10 @@ func outro_actions(node):
 	yield(get_tree().create_timer(.1),"timeout")
 	node.visible = false
 	#node.rect_position = start
+
+func destroy_node_with_effect(node):
+	tween.interpolate_property(node,"modulate",node.modulate,Color(1,1,1,0),.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	tween.start()
+	yield(get_tree().create_timer(.3),"timeout")
+	node.get_parent().remove_child(node)
+	node.queue_free()

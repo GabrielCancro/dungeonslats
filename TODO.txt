@@ -1,17 +1,14 @@
-que las acciones surtan efecto
-que el nivel de desafio baje y al llegar a cero se resuelva la carta (enemigos y trampas)
+X agregar los desafios de cofre, trampa y secreto
 que se generen desafios random
-agregar los desafios de cofre, trampa y secreto
+que las acciones surtan efecto, el nivel de desafio baja y al llegar a cero se resuelve
+
+añadir multipes jugadores
+añadir cambio de turno
 
 añadir movimiento al clickear puertas
 añadir que recibes daño si te mueves a otra habitacion
-
 implementar objetos
 añadir objetos basicos (espada escudo botas pergamino y mas)
-
 añadir planilla de jugador
-añadir multipes jugadores
-
 añadir desafios especiales de escalera y palanca
-
 añadir habitaciones inexploradas

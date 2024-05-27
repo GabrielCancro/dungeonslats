@@ -52,9 +52,9 @@ func create_new_room(x,y):
 		"doors":{"up":null,"down":null,"left":null,"right":null},
 		"is_creted_in_last_step":true,
 		"is_explored":false,
-		"room_ref":null,
+		"node_ref":null,
 		"state":"unexplored", #unexplored, ask, danger, safe
-		"defiances": [ {"type":"enemy", "lv":3, "actions":[ {"name":"attack","req":{"SW":3} }, {"name":"evade","req":{"BT":2} } ] } ],
+		"defiances": [DefianceManager.get_random_defiance()],
 		"items": null, #ItemManager.get_some_items()
 	}
 	if (x==0 && y==0):

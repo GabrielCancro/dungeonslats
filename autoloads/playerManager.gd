@@ -30,6 +30,10 @@ func init_players_data(amount):
 func get_player_data(index = current_player_index):
 	return players[current_player_index]
 
+func get_player_room_data():
+	var player_data = get_player_data()
+	return MapGenerator.get_room_data(player_data.posX,player_data.posY)
+
 func player_data_inc(k,v):
 	var player_data = get_player_data()
 	player_data[k] += v

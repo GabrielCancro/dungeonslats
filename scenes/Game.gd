@@ -6,7 +6,9 @@ var room_size = Vector2(520+32,368)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SlatsManager._init_slat_manager(self)
+	PlayerManager._initialize_player_manager(self)
 	MapGenerator.generate_new_map(30,false)
+	$CanvasLayerUI/BtnEndTurn.connect("button_down",self,"end_turn")
 	for room_name in MapGenerator.rooms:
 		var room_data = MapGenerator.rooms[room_name]
 		var rnode = preload("res://gameObjects/Room.tscn").instance()
@@ -34,3 +36,18 @@ func _process(delta):
 		$Camera2D.zoom *= 1.1
 		print("ZOOM ",$Camera2D.zoom.x)
 
+func end_turn():
+	var room_data = PlayerManager.get_player_room_data()
+	$Camera2D.position = room_data.node_ref.position
+	yield(get_tree().create_timer(.5),"timeout")
+#	for def in MapManager.current_room.data.tokens:
+#		if !card: continue
+#		CardManager.run_action(card)
+#		yield(CardManager,"end_all_actions")
+#		yield(get_tree().create_timer(.2),"timeout")
+#	yield(get_tree().create_timer(.5),"timeout")
+#	$DiceSet.reset_set()
+#	PlayerManager.set_next_player()
+#	PlayerManager.player_data_inc("mv",99)
+#	PlayerManager.player_data_inc("rl",99)
+#	MapManager.load_current_player_room()

@@ -1,14 +1,30 @@
 extends Node
 
+var DEFIANCES = {
+	"enemy":{"lv":3, "damage":2, "actions":[ 
+		{"name":"attack","req":{"SW":1} }, 
+		{"name":"evade","req":{"BT":2} } 
+	]},
+	"trap":{"lv":3, "damage":1, "actions":[ 
+		{"name":"attack","req":{"SW":3} }, 
+		{"name":"evade","req":{"BT":2} } 
+	]},
+	"chest":{"lv":3, "actions":[ 
+		{"name":"attack","req":{"SW":3} }, 
+		{"name":"evade","req":{"BT":2} } 
+	]},
+}
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func get_defiance(type):
+	var def = DEFIANCES[type].duplicate(true)
+	def["type"] = type
+	def["node_ref"] = null
+	return def
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func get_random_defiance():
+	randomize()
+	var rk = DEFIANCES.keys()[ randi()%DEFIANCES.keys().size() ]
+	return get_defiance(rk)
 
 func on_click_action(action_data):
 	if SlatsManager.consume_slats(action_data.req): 
@@ -17,5 +33,6 @@ func on_click_action(action_data):
 	else: EffectManager.shake_rect(SlatsManager.SLATTER)
 
 func ac_enemy_attack(action_data):
+	action_data.defiance_data.node_ref.reduce_defiance_level()
 	print("CALL AN ACTION FUNCTION --> ac_enemy_attack")
 	EffectManager.shake(action_data.defiance_data.node_ref)
