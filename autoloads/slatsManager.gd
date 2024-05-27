@@ -35,4 +35,5 @@ func consume_slats(req):
 	return true
 
 func get_color(type):
+	return Color(1,1,1)
 	return SLAT_COLORS[type]
