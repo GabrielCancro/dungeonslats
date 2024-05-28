@@ -1,5 +1,6 @@
 X agregar los desafios de cofre, trampa y secreto
 que se generen desafios random
+añadir planilla de jugador
 que las acciones surtan efecto, el nivel de desafio baja y al llegar a cero se resuelve
 
 añadir multipes jugadores
@@ -9,6 +10,6 @@ añadir movimiento al clickear puertas
 añadir que recibes daño si te mueves a otra habitacion
 implementar objetos
 añadir objetos basicos (espada escudo botas pergamino y mas)
-añadir planilla de jugador
+
 añadir desafios especiales de escalera y palanca
 añadir habitaciones inexploradas
