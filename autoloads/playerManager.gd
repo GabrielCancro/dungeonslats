@@ -10,7 +10,7 @@ func _initialize_player_manager(_GAME):
 	GAME = _GAME
 	#PLAYER_TOKENS_CONTAINER = GAME.get_node("PlayerTokens")
 	#MapManager.connect("load_new_room",self,"set_player_tokens")
-	init_players_data(2)
+	init_players_data(3)
 	set_current_player(current_player_index)
 
 func init_players_data(amount):
@@ -20,7 +20,7 @@ func init_players_data(amount):
 			"hp":6,"hpm":6,
 			"mv":3,"mvm":3,
 			"feat":2,
-			"posX":0,"posY":0,
+			"posX":i,"posY":i,
 			"items":[],
 			"abilities":[],
 			"slats":{"SW":2}

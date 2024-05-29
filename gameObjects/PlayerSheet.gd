@@ -1,18 +1,12 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	PlayerManager.connect("update_player_data",self,"update_sheet")
 
 func update_sheet(pdata): 
 	if pdata != PlayerManager.get_player_data(): return
-	$Label.text = "Player "+str(PlayerManager.current_player_index)
+	$Retrait.texture = load("res://assets/retraits/token_retrait"+str(pdata.retrait)+".png")
+	$Label.text = "Player "+str(PlayerManager.current_player_index+1)
 	$Label.text += "\nHP "+str(pdata.hp)+"/"+str(pdata.hpm)
 	$Label.text += "\nMV "+str(pdata.mv)+"/"+str(pdata.mvm)
 	$Label.text += "\nFEAT "+str(pdata.feat)
