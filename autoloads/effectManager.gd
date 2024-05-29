@@ -2,6 +2,7 @@ extends Node
 
 onready var tween = Tween.new()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(tween)
@@ -41,6 +42,13 @@ func intro_actions(node):
 	var end = node.rect_position
 	tween.interpolate_property(node,"rect_position",end+Vector2(-20,0),end,.1,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	tween.interpolate_property(node,"modulate",Color(1,1,1,0),Color(1,1,1,1),.1,Tween.TRANS_QUAD,Tween.EASE_IN)
+	tween.start()
+
+func zoom_yoyo(node):
+	var start = node.scale
+	var zoom = Vector2(.2,.2)
+	tween.interpolate_property(node,"scale",start,start+zoom,.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	tween.interpolate_property(node,"scale",start+zoom,start,.2,Tween.TRANS_QUAD,Tween.EASE_IN,.7)
 	tween.start()
 
 func outro_actions(node):

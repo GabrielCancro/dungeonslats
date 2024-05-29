@@ -23,9 +23,10 @@ func init_players_data(amount):
 			"posX":i,"posY":i,
 			"items":[],
 			"abilities":[],
-			"slats":{"SW":2}
+			"slats":{"SW":2},
+			"token_ref": preload("res://gameObjects/PlayerToken.tscn").instance()
 		})
-		
+		GAME.get_node("Map").add_child(players[i].token_ref)
 
 func get_player_data(index = current_player_index):
 	return players[current_player_index]
@@ -59,7 +60,7 @@ func damage_player(dam=1):
 #	if dam>0: 
 #		Effector.shake(get_player_token(),5)
 #		Effector.damage_player()
-#	emit_signal("update_player_data",player_data)
+	emit_signal("update_player_data",player_data)
 
 func set_current_player(index):
 	current_player_index = index

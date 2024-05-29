@@ -37,10 +37,21 @@ func _process(delta):
 		print("ZOOM ",$Camera2D.zoom.x)
 
 func end_turn():
-	PlayerManager.set_next_player()
 	var room_data = PlayerManager.get_player_room_data()
-	$Camera2D.position = room_data.node_ref.position
+	for defiance_data in room_data.defiances:
+		DefianceManager.on_resolve_defiance(defiance_data)
+		yield(DefianceManager,"end_defiance_effect")
+		
 	yield(get_tree().create_timer(.5),"timeout")
+	room_data = null
+	while !room_data:
+		PlayerManager.set_next_player()
+		PlayerManager.player_data_inc("mv",99)
+		SlatsManager.clear_slats()
+		room_data = PlayerManager.get_player_room_data()
+	
+	$Camera2D.position = room_data.node_ref.position
+	
 #	for def in MapManager.current_room.data.tokens:
 #		if !card: continue
 #		CardManager.run_action(card)

@@ -57,3 +57,7 @@ func get_valid_slat(_type):
 		if slat.type!=_type: continue
 		return slat
 	return null
+
+func clear_all_slats():
+	Utils.remove_all_childs($SlatContainer)
+	valid_slats = {}

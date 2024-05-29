@@ -37,3 +37,6 @@ func consume_slats(req):
 func get_color(type):
 	return Color(1,1,1)
 	return SLAT_COLORS[type]
+
+func clear_slats():
+	SLATTER.clear_all_slats()
