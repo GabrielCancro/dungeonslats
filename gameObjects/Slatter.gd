@@ -12,6 +12,7 @@ func _ready():
 
 func roll_slats():
 	is_rolling = true
+	slats = PlayerManager.get_player_data().slats
 	for s in SlatsManager.SLAT_COLORS.keys(): valid_slats[s] = 0
 	$Button.disabled = is_rolling
 	Utils.remove_all_childs($SlatContainer)

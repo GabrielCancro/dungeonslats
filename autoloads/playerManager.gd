@@ -12,10 +12,17 @@ func _initialize_player_manager(_GAME):
 	#MapManager.connect("load_new_room",self,"set_player_tokens")
 	init_players_data(3)
 	set_current_player(current_player_index)
+	yield(get_tree().create_timer(.2),"timeout")
+	for player_data in players:
+		var room_data = MapGenerator.get_room_data(player_data.posX,player_data.posY)
+		if room_data && room_data.node_ref: 
+			player_data.token_ref.position = room_data.node_ref.position + Vector2(-40+40*player_data.index,0)
 
 func init_players_data(amount):
+	randomize()
 	for i in range(amount):
 		players.append({
+			"index":i,
 			"retrait":i+1,
 			"hp":6,"hpm":6,
 			"mv":3,"mvm":3,
@@ -23,9 +30,10 @@ func init_players_data(amount):
 			"posX":i,"posY":i,
 			"items":[],
 			"abilities":[],
-			"slats":{"SW":2},
+			"slats":{"SW":randi()%5, "GR":randi()%5, "EY":randi()%5, "BT":randi()%5, "SC":randi()%5},
 			"token_ref": preload("res://gameObjects/PlayerToken.tscn").instance()
 		})
+		players[i].token_ref.set_data(players[i])
 		GAME.get_node("Map").add_child(players[i].token_ref)
 
 func get_player_data(index = current_player_index):
@@ -63,7 +71,9 @@ func damage_player(dam=1):
 	emit_signal("update_player_data",player_data)
 
 func set_current_player(index):
+	get_player_data().token_ref.z_index = 0
 	current_player_index = index
+	get_player_data().token_ref.z_index = 1
 	emit_signal("update_player_data",get_player_data())
 
 func set_next_player():

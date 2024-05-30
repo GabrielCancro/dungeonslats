@@ -2,9 +2,10 @@ extends Node2D
 
 var defiance_data
 
-func set_data(_data):
+func set_data(_data,room_data):
 	defiance_data = _data
 	defiance_data["node_ref"] = self
+	defiance_data["room_data"]  = room_data
 	$Sprite.texture = load("res://assets/room/def_"+defiance_data["type"]+".png")
 	$Lb_defiance_level.text = str(defiance_data["lv"])
 	$Lb_danger.visible = "damage" in defiance_data
@@ -34,4 +35,5 @@ func reduce_defiance_level(amount=1):
 	#EffectManager.intro_actions($Lb_defiance_level)
 	yield(get_tree().create_timer(.3),"timeout")
 	if defiance_data["lv"] <= 0: 
+		defiance_data.room_data.defiances.erase(defiance_data)
 		EffectManager.destroy_node_with_effect(defiance_data.node_ref)

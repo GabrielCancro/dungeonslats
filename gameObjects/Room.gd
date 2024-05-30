@@ -16,7 +16,7 @@ func create_defiances():
 	$Defiances.visible = false
 	for def_data in room_data.defiances:
 		var dnode = preload("res://gameObjects/Defiance.tscn").instance()
-		dnode.set_data(def_data)
+		dnode.set_data(def_data,room_data)
 		var def_point = $Defiances.get_child( randi()%$Defiances.get_child_count() )
 		$Defiances.remove_child(def_point)
 		dnode.position = def_point.position
