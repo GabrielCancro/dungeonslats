@@ -50,7 +50,7 @@ func end_turn():
 		SlatsManager.clear_slats()
 		room_data = PlayerManager.get_player_room_data()
 	
-	$Camera2D.position = room_data.node_ref.position
+	PlayerManager.focus_camera()
 	
 #	for def in MapManager.current_room.data.tokens:
 #		if !card: continue

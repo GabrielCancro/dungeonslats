@@ -13,7 +13,7 @@ func _initialize_player_manager(_GAME):
 	init_players_data(3)
 	set_current_player(current_player_index)
 	yield(get_tree().create_timer(.2),"timeout")
-	for player_data in players:
+	for player_data in players: 
 		var room_data = MapGenerator.get_room_data(player_data.posX,player_data.posY)
 		if room_data && room_data.node_ref: 
 			player_data.token_ref.position = room_data.node_ref.position + Vector2(-40+40*player_data.index,0)
@@ -81,6 +81,22 @@ func set_next_player():
 	if current_player_index >= players.size():
 		current_player_index = 0
 	set_current_player(current_player_index)
+
+func move_player_to(dir):
+	print(dir)
+	var pdata = get_player_data()
+	pdata.posX += dir.x
+	pdata.posY += dir.y
+	pdata.token_ref.position = get_player_room_data().node_ref.position
+	pdata.token_ref.z_index = 1
+	focus_camera()
+#	for pd in players:
+#		if pdata!=pd && pd.posX==pdata.posX && pd.posX==pdata.posX:
+#			pdata.token_ref.z_index = 0
+#	
+
+func focus_camera():
+	GAME.get_node("Camera2D").position = get_player_room_data().node_ref.position
 
 #func set_player_tokens(room_data):
 #	for PT in PLAYER_TOKENS_CONTAINER.get_children():
