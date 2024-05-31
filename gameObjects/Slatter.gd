@@ -11,6 +11,7 @@ func _ready():
 	$Button2.connect("button_down",self,"reroll_slats")
 
 func roll_slats():
+	PlayerManager.player_data_inc("mv",-99)
 	is_rolling = true
 	slats = PlayerManager.get_player_data().slats
 	for s in SlatsManager.SLAT_COLORS.keys(): valid_slats[s] = 0
@@ -44,6 +45,16 @@ func collect_slats():
 		slat.goto_pos(pos)
 		pos.x += 20
 	print("VALID SLATS ",valid_slats)
+
+func add_valid_slats(slats):
+	for key in slats.keys():
+		for i in range(slats[key]):
+			var slat_node = load("res://gameObjects/Slat.tscn").instance()
+			slat_node.set_slat(key)
+			slat_node.set_valid(true)
+			$SlatContainer.add_child(slat_node)
+	yield(get_tree().create_timer(1.2),"timeout")
+	collect_slats()
 
 func reroll_slats():
 	for s in SlatsManager.SLAT_COLORS.keys(): valid_slats[s] = 0

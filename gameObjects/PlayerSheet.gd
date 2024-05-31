@@ -27,6 +27,8 @@ func update_slats(pdata):
 		i+=1
 
 func update_abilities(pdata):
-	$Label_abs.text = ""
-	for ab in pdata.abilities:
-		$Label_abs.text += "-"+ab.name+"\n"
+	Utils.remove_all_childs($Abilities)
+	for ab_data in pdata.abilities:
+		var abnode = preload("res://gameObjects/AbilityLine.tscn").instance()
+		abnode.set_data(ab_data)
+		$Abilities.add_child(abnode)

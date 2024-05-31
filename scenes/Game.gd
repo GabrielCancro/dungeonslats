@@ -39,7 +39,7 @@ func _process(delta):
 func end_turn():
 	var room_data = PlayerManager.get_player_room_data()
 	for defiance_data in room_data.defiances:
-		DefianceManager.on_resolve_defiance(defiance_data)
+		DefianceManager.on_end_defiance(defiance_data)
 		yield(DefianceManager,"end_defiance_effect")
 		
 	yield(get_tree().create_timer(.5),"timeout")

@@ -11,12 +11,14 @@ func _ready():
 	rect_global_position = get_viewport_rect().size/2
 	roll()
 
-func roll():
-	randomize()
-	isValid = (randi()%100<50)
-	print(isValid)
+func set_valid(val):
+	isValid = val
 	if isValid: modulate = SlatsManager.get_color(type)
 	else: modulate = Color(.4,.4,.4,0)
+
+func roll():
+	randomize()
+	set_valid( randi()%100 < 50 )
 	var slow = randf()*0.2
 	$Tween.interpolate_property(self,"modulate:a",0,1,.4+slow,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	var end_pos = get_viewport_rect().size/2 + Vector2(rand_range(-100,100),rand_range(-100,100))

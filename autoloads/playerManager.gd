@@ -39,7 +39,7 @@ func init_players_data(amount):
 		GAME.get_node("Map").add_child(players[i].token_ref)
 
 func get_player_data(index = current_player_index):
-	return players[current_player_index]
+	return players[index]
 
 func get_player_room_data():
 	var player_data = get_player_data()
@@ -73,12 +73,12 @@ func damage_player(dam=1):
 	emit_signal("update_player_data",player_data)
 
 func set_current_player(index):
-	get_player_data().token_ref.z_index = 0
 	current_player_index = index
 	get_player_data().token_ref.z_index = 1
 	emit_signal("update_player_data",get_player_data())
 
 func set_next_player():
+	get_player_data().token_ref.z_index = 0
 	current_player_index += 1
 	if current_player_index >= players.size():
 		current_player_index = 0

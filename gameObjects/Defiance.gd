@@ -34,6 +34,4 @@ func reduce_defiance_level(amount=1):
 	$Lb_defiance_level.text = str(defiance_data["lv"])
 	#EffectManager.intro_actions($Lb_defiance_level)
 	yield(get_tree().create_timer(.3),"timeout")
-	if defiance_data["lv"] <= 0: 
-		defiance_data.room_data.defiances.erase(defiance_data)
-		EffectManager.destroy_node_with_effect(defiance_data.node_ref)
+	if defiance_data["lv"] <= 0: DefianceManager.on_resolve_defiance(defiance_data)

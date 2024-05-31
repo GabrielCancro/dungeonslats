@@ -2,16 +2,14 @@ extends Node
 
 var DEFIANCES = {
 	"enemy":{"lv":3, "damage":2, "actions":[ 
-		{"name":"attack","req":{"SW":1} }, 
-		{"name":"evade","req":{"BT":2} } 
+		{"name":"attack","req":{"SW":1} }
 	]},
-	"trap":{"lv":3, "damage":1, "actions":[ 
-		{"name":"attack","req":{"SW":3} }, 
-		{"name":"evade","req":{"BT":2} } 
+	"trap":{"lv":1, "damage":1, "actions":[ 
+		{"name":"disarm","req":{"GR":2 } }
 	]},
-	"chest":{"lv":3, "actions":[ 
-		{"name":"attack","req":{"SW":3} }, 
-		{"name":"evade","req":{"BT":2} } 
+	"chest":{"lv":2, "actions":[ 
+		{"name":"open","req":{"GR":2} }, 
+		{"name":"break","req":{"SW":3} } 
 	]},
 }
 
@@ -40,8 +38,8 @@ func on_click_action(action_data):
 		if has_method(metod_name): call(metod_name,action_data)
 	else: EffectManager.shake_rect(SlatsManager.SLATTER)
 
-func on_resolve_defiance(defiance_data):
-	var metod_name = "resolve_"+defiance_data.type
+func on_end_defiance(defiance_data):
+	var metod_name = "end_"+defiance_data.type
 	if has_method(metod_name): 
 		EffectManager.zoom_yoyo(defiance_data.node_ref)
 		call(metod_name,defiance_data)
@@ -49,12 +47,37 @@ func on_resolve_defiance(defiance_data):
 	yield(get_tree().create_timer(.2),"timeout")
 	emit_signal("end_defiance_effect")
 
+func on_resolve_defiance(defiance_data):
+	defiance_data.room_data.defiances.erase(defiance_data)
+	EffectManager.destroy_node_with_effect(defiance_data.node_ref)
+
 #ENEMY
 func ac_enemy_attack(action_data):
 	action_data.defiance_data.node_ref.reduce_defiance_level()
 	EffectManager.shake(action_data.defiance_data.node_ref)
 
-func resolve_enemy(defiance_data):
+func end_enemy(defiance_data):
 	EffectManager.shake(defiance_data.node_ref)
 	PlayerManager.damage_player(defiance_data.damage)
-	
+
+#TRAP
+func ac_trap_disarm(action_data):
+	action_data.defiance_data.node_ref.reduce_defiance_level()
+	EffectManager.shake(action_data.defiance_data.node_ref)
+
+func end_trap(defiance_data):
+	EffectManager.shake(defiance_data.node_ref)
+	PlayerManager.damage_player(defiance_data.damage)
+
+#CHEST
+func ac_chest_open(action_data):
+	action_data.defiance_data.node_ref.reduce_defiance_level()
+	EffectManager.shake(action_data.defiance_data.node_ref)
+
+func ac_chest_break(action_data):
+	action_data.defiance_data.node_ref.reduce_defiance_level()
+	EffectManager.shake(action_data.defiance_data.node_ref)
+
+func resolve_chest(defiance_data):
+	EffectManager.shake(defiance_data.node_ref)
+	print("OPEN CHEST!")
