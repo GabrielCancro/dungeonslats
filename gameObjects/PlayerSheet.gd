@@ -11,6 +11,7 @@ func update_sheet(pdata):
 	$Label.text += "\nMV "+str(pdata.mv)+"/"+str(pdata.mvm)
 	$Label.text += "\nFEAT "+str(pdata.feat)
 	update_slats(pdata)
+	update_abilities(pdata)
 
 func update_slats(pdata):
 	var i = 0
@@ -24,4 +25,8 @@ func update_slats(pdata):
 			node.modulate = Color(.3,.3,.3,1)
 			node.get_node("Label").text = "x"
 		i+=1
-	
+
+func update_abilities(pdata):
+	$Label_abs.text = ""
+	for ab in pdata.abilities:
+		$Label_abs.text += "-"+ab.name+"\n"

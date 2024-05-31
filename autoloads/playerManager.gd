@@ -16,7 +16,8 @@ func _initialize_player_manager(_GAME):
 	for player_data in players: 
 		var room_data = MapGenerator.get_room_data(player_data.posX,player_data.posY)
 		if room_data && room_data.node_ref: 
-			player_data.token_ref.position = room_data.node_ref.position + Vector2(-40+40*player_data.index,0)
+			player_data.token_ref.position = room_data.node_ref.position
+			player_data.token_ref.position.x += 40*player_data.index
 
 func init_players_data(amount):
 	randomize()
@@ -27,12 +28,13 @@ func init_players_data(amount):
 			"hp":6,"hpm":6,
 			"mv":3,"mvm":3,
 			"feat":2,
-			"posX":i,"posY":i,
+			"posX":0,"posY":0,
 			"items":[],
 			"abilities":[],
 			"slats":{"SW":randi()%5, "GR":randi()%5, "EY":randi()%5, "BT":randi()%5, "SC":randi()%5},
 			"token_ref": preload("res://gameObjects/PlayerToken.tscn").instance()
 		})
+		ItemManager.add_ability_to_player("berserk",i)
 		players[i].token_ref.set_data(players[i])
 		GAME.get_node("Map").add_child(players[i].token_ref)
 
@@ -84,11 +86,12 @@ func set_next_player():
 
 func move_player_to(dir):
 	print(dir)
+	if !PlayerManager.player_data_inc("mv",-1): return
 	var pdata = get_player_data()
 	pdata.posX += dir.x
 	pdata.posY += dir.y
 	pdata.token_ref.position = get_player_room_data().node_ref.position
-	pdata.token_ref.z_index = 1
+	pdata.token_ref.position.x += 40*pdata.index
 	focus_camera()
 #	for pd in players:
 #		if pdata!=pd && pd.posX==pdata.posX && pd.posX==pdata.posX:

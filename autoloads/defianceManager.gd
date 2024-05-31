@@ -41,10 +41,12 @@ func on_click_action(action_data):
 	else: EffectManager.shake_rect(SlatsManager.SLATTER)
 
 func on_resolve_defiance(defiance_data):
-	EffectManager.zoom_yoyo(defiance_data.node_ref)
 	var metod_name = "resolve_"+defiance_data.type
-	if has_method(metod_name): call(metod_name,defiance_data)
-	yield(get_tree().create_timer(1.5),"timeout")
+	if has_method(metod_name): 
+		EffectManager.zoom_yoyo(defiance_data.node_ref)
+		call(metod_name,defiance_data)
+		yield(get_tree().create_timer(1.5),"timeout")
+	yield(get_tree().create_timer(.2),"timeout")
 	emit_signal("end_defiance_effect")
 
 #ENEMY
