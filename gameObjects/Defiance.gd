@@ -7,31 +7,32 @@ func set_data(_data,room_data):
 	defiance_data["node_ref"] = self
 	defiance_data["room_data"]  = room_data
 	$Sprite.texture = load("res://assets/room/def_"+defiance_data["type"]+".png")
-	$Lb_defiance_level.text = str(defiance_data["lv"])
-	$Lb_danger.visible = "damage" in defiance_data
-	if $Lb_danger.visible: 
-		$Lb_danger.text = ""
-		for i in range(defiance_data["damage"]): $Lb_danger.text += "!"
 	
-	Utils.remove_all_childs($Actions)
-	for ac_data in defiance_data.actions:
-		var anode = preload("res://gameObjects/ActionLine.tscn").instance()
-		ac_data["defiance_data"] = defiance_data
-		anode.set_data(ac_data)
-		$Actions.add_child(anode)
-		var i = anode.get_index()
-		anode.rect_position.y = -70 + 35*i
-		anode.rect_position.x += i%2*15
-
-func _process(delta):
-	if (get_global_mouse_position().distance_to(global_position+Vector2(20,-30)) < 70):
-		if !$Actions.visible: EffectManager.intro_actions($Actions)
-	else: 
-		if $Actions.visible: EffectManager.outro_actions($Actions)
+	$Action/Button.connect("mouse_entered",self,"on_mouse_enter_action_area",[true])
+	$Action/Button.connect("mouse_exited",self,"on_mouse_enter_action_area",[false])
+	$Action/Button.connect("button_down",DefianceManager,"on_click_action",[defiance_data])
+	
+	update_labels()
+	for nr in $Action/Req.get_children(): nr.visible = false
+	var index = 0
+	for type in defiance_data.action_req.keys():
+		for i in range(defiance_data.action_req[type]):
+			$Action/Req.get_child(index).texture = load("res://assets/slats/"+type+".png")
+			#$Action/Req.get_child(index).modulate = SlatsManager.get_color(type)
+			$Action/Req.get_child(index).visible = true
+			index+=1
 
 func reduce_defiance_level(amount=1):
-	defiance_data["lv"] -= amount
-	$Lb_defiance_level.text = str(defiance_data["lv"])
-	#EffectManager.intro_actions($Lb_defiance_level)
+	defiance_data["action_amount"] -= amount
+	update_labels()
 	yield(get_tree().create_timer(.3),"timeout")
-	if defiance_data["lv"] <= 0: DefianceManager.on_resolve_defiance(defiance_data)
+	if defiance_data["action_amount"] <= 0: DefianceManager.on_resolve_defiance(defiance_data)
+
+func update_labels():
+	$Action/Label.text = defiance_data["action_name"]
+	$Lb_danger.visible = "damage" in defiance_data
+	if $Lb_danger.visible: $Lb_danger.text = Utils.repeated_string("!",defiance_data.damage)
+	$Action/Label_amount.text = Utils.repeated_string("*",defiance_data.action_amount)
+
+func on_mouse_enter_action_area(val):
+	$Action/Label.visible = val
