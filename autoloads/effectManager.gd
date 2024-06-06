@@ -67,3 +67,10 @@ func destroy_node_with_effect(node):
 	yield(get_tree().create_timer(.3),"timeout")
 	node.get_parent().remove_child(node)
 	node.queue_free()
+
+func dissappear(node):
+	node.visible = true
+	tween.interpolate_property(node,"modulate:a",1,0,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	tween.start()
+	yield(get_tree().create_timer(.3),"timeout")
+	node.visible = false

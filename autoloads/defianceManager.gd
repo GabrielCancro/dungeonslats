@@ -37,8 +37,9 @@ func on_end_defiance(defiance_data):
 	print("try call ",metod_name)
 	if has_method(metod_name): 
 		EffectManager.zoom_yoyo(defiance_data.node_ref)
+		yield(get_tree().create_timer(0.5),"timeout")
 		call(metod_name,defiance_data)
-		yield(get_tree().create_timer(1.5),"timeout")
+		yield(get_tree().create_timer(1.0),"timeout")
 	yield(get_tree().create_timer(.2),"timeout")
 	emit_signal("end_defiance_effect")
 
@@ -60,7 +61,6 @@ func ac_enemy_attack(defiance_data):
 	EffectManager.shake(defiance_data.node_ref)
 
 func end_enemy(defiance_data):
-	EffectManager.shake(defiance_data.node_ref)
 	PlayerManager.damage_player(defiance_data.damage)
 
 func resolve_enemy(defiance_data): pass
@@ -71,7 +71,6 @@ func ac_trap_dissarm(defiance_data):
 	EffectManager.shake(defiance_data.node_ref)
 
 func end_trap(defiance_data):
-	EffectManager.shake(defiance_data.node_ref)
 	PlayerManager.damage_player(defiance_data.damage)
 
 func resolve_trap(defiance_data): pass
