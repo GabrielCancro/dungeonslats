@@ -142,6 +142,7 @@ margin_left = -52.5
 margin_top = 6.5
 margin_right = 52.5
 margin_bottom = 31.5
+custom_colors/font_color = Color( 0.835294, 0.635294, 0.635294, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "******"
 align = 1
