@@ -88,6 +88,7 @@ func on_hint_enter_area(node,code,val):
 	if val:
 		hint_current_node = node
 		GAME.get_node("CanvasLayerUI/HintPanel/Label").text = Lang.get_text(code)
+		GAME.get_node("CanvasLayerUI/HintPanel/RichTextLabel").bbcode_text = Lang.get_text(code)
 		GAME.get_node("CanvasLayerUI/HintPanel").visible = true
 	elif hint_current_node == node:
 		GAME.get_node("CanvasLayerUI/HintPanel").visible = false

@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	PlayerManager.connect("update_player_data",self,"update_sheet")
+	add_hint_slats()
 
 func update_sheet(pdata): 
 	if pdata != PlayerManager.get_player_data(): return
@@ -12,6 +13,10 @@ func update_sheet(pdata):
 	$Label.text += "\nFEAT "+str(pdata.feat)
 	update_slats(pdata)
 	update_abilities(pdata)
+
+func add_hint_slats():
+	for n in $HBoxSlats.get_children():
+		EffectManager.add_hint(n,"slat_"+SlatsManager.SLAT_COLORS.keys()[n.get_index()])
 
 func update_slats(pdata):
 	var i = 0

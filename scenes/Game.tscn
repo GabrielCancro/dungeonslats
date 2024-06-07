@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://gameObjects/Slatter.tscn" type="PackedScene" id=2]
@@ -14,6 +14,9 @@ shader_param/jitter = 0.5
 
 [sub_resource type="DynamicFont" id=2]
 outline_color = Color( 0.168627, 0.168627, 0.168627, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 5 )
 
 [node name="Game" type="Node2D"]
@@ -76,6 +79,7 @@ margin_bottom = 63.0
 color = Color( 0.0585938, 0.0585938, 0.0585938, 0.862745 )
 
 [node name="Label" type="Label" parent="CanvasLayerUI/HintPanel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -86,3 +90,20 @@ text = "Hint text description! Hint text description! Hint text description! Hin
 align = 1
 valign = 1
 autowrap = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayerUI/HintPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -252.0
+margin_top = -21.5
+margin_right = 252.0
+margin_bottom = 33.5
+rect_pivot_offset = Vector2( 710, 134 )
+custom_colors/default_color = Color( 0.87451, 0.87451, 0.87451, 1 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "qweqwe[img=15]res://assets/slats/BT.png[/img] adasfqweqwe[img=15]res://assets/slats/BT.png[/img]qweqwe[img=15]res://assets/slatsqweqwe[img=15]res://assets/slats/BT.png[/img] adasfqweqwe[img=15]res://assets/slats/BT.png[/img]/BT.png[/img] adasfqweqwe[img=15]res://assets/slats/BT.png[/img]qweqwe[img=15]res://assets/slats/BT.png[/img] adasfqweqwe[img=15]res://assets/slats/BT.png[/img]qweqwe[img=15]res://assets/slats/BT.png[/img] ada"
+text = "qweqwe adasfqweqweqweqwe adasfqweqwe/BT.png adasfqweqweqweqwe adasfqweqweqweqwe ada"
+scroll_active = false
