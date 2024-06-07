@@ -14,6 +14,7 @@ func _initialize_player_manager(_GAME):
 
 func init_players_data(amount):
 	randomize()
+	print("CREATE PLAYERS")
 	for i in range(amount):
 		players.append({
 			"index":i,
@@ -66,8 +67,8 @@ func damage_player(dam=1):
 	emit_signal("update_player_data",player_data)
 
 func set_current_player(index):
+	print("SET CURRENT PLAYER ",index)
 	current_player_index = index
-	get_player_data().token_ref.z_index = 1
 	set_player_tokens()
 	emit_signal("update_player_data",get_player_data())
 
@@ -99,7 +100,7 @@ func set_player_tokens():
 	for pd in players:
 		var room_data = MapGenerator.get_room_data(pd.posX,pd.posY)
 		if pd.index != current_player_index:
-			pd.token_ref.position.x = room_data.node_ref.position+offset
+			pd.token_ref.position.x = room_data.node_ref.position.x+offset
 			offset *= -1
 			pd.token_ref.z_index = 0
 		else: pd.token_ref.z_index = 1

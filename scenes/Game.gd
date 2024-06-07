@@ -7,6 +7,7 @@ var room_size = Vector2(520+32,368)
 func _ready():
 	SlatsManager._init_slat_manager(self)
 	PlayerManager._initialize_player_manager(self)
+	EffectManager._initialize_effector(self)
 	MapGenerator.generate_new_map(30,false)
 	$CanvasLayerUI/BtnEndTurn.connect("button_down",self,"end_turn")
 	for room_name in MapGenerator.rooms:

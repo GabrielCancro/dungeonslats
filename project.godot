@@ -23,6 +23,7 @@ PlayerManager="*res://autoloads/playerManager.gd"
 EffectManager="*res://autoloads/effectManager.gd"
 DefianceManager="*res://autoloads/defianceManager.gd"
 ItemManager="*res://autoloads/itemManager.gd"
+Lang="*res://autoloads/lang.gd"
 
 [display]
 

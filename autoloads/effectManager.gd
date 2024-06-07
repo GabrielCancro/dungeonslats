@@ -1,11 +1,15 @@
 extends Node
 
+var GAME
 onready var tween = Tween.new()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(tween)
+
+func _initialize_effector(_game):
+	GAME = _game
 
 func add_visible_on_hint(node_area,node_showed):
 	node_showed.visible = false
@@ -74,3 +78,17 @@ func dissappear(node):
 	tween.start()
 	yield(get_tree().create_timer(.3),"timeout")
 	node.visible = false
+
+var hint_current_node
+func add_hint(node,tx_code):
+	node.connect("mouse_entered",self,"on_hint_enter_area",[node,tx_code,true])
+	node.connect("mouse_exited",self,"on_hint_enter_area",[node,tx_code,false])
+
+func on_hint_enter_area(node,code,val):
+	if val:
+		hint_current_node = node
+		GAME.get_node("CanvasLayerUI/HintPanel/Label").text = Lang.get_text(code)
+		GAME.get_node("CanvasLayerUI/HintPanel").visible = true
+	elif hint_current_node == node:
+		GAME.get_node("CanvasLayerUI/HintPanel").visible = false
+
