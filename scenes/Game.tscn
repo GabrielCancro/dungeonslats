@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://gameObjects/Slatter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://shaders/cellular3d.tres" type="Shader" id=3]
 [ext_resource path="res://gameObjects/PlayerSheet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://gameObjects/ItemsInRoom.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -107,3 +108,11 @@ bbcode_enabled = true
 bbcode_text = "qweqwe[img=15]res://assets/slats/BT.png[/img] adasfqweqwe[img=15]res://assets/slats/BT.png[/img]qweqwe[img=15]res://assets/slatsqweqwe[img=15]res://assets/slats/BT.png[/img] adasfqweqwe[img=15]res://assets/slats/BT.png[/img]/BT.png[/img] adasfqweqwe[img=15]res://assets/slats/BT.png[/img]qweqwe[img=15]res://assets/slats/BT.png[/img] adasfqweqwe[img=15]res://assets/slats/BT.png[/img]qweqwe[img=15]res://assets/slats/BT.png[/img] ada"
 text = "qweqwe adasfqweqweqweqwe adasfqweqwe/BT.png adasfqweqweqweqwe adasfqweqweqweqwe ada"
 scroll_active = false
+
+[node name="ItemsInRoom" parent="CanvasLayerUI" instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -85.0
+margin_top = 112.0
+margin_right = 0.0
+margin_bottom = 410.0

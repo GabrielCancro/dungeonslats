@@ -4,6 +4,10 @@ var ABILITIES = {
 	"berserk":{"max_uses":3}
 }
 
+var ITEMS = {
+	"short_sword":{"uses":3}
+}
+
 func get_ability(code_ab):
 	var ab = ABILITIES[code_ab].duplicate()
 	ab["name"] = code_ab
@@ -25,3 +29,11 @@ func on_use_berserk(ab_data):
 		yield(get_tree().create_timer(.3),"timeout")
 		SlatsManager.SLATTER.add_valid_slats({"SW":2})
 		PlayerManager.emit_signal("update_player_data",PlayerManager.get_player_data())
+
+func get_item_data(code):
+	var item_data = ITEMS[code].duplicate(true)
+	item_data["name"] = code
+	return item_data
+
+func get_some_items():
+	return [get_item_data("short_sword")]

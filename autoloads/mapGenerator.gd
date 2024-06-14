@@ -55,7 +55,7 @@ func create_new_room(x,y):
 		"node_ref":null,
 		"state":"unexplored", #unexplored, ask, danger, safe
 		"defiances": DefianceManager.get_room_random_defiances(),
-		"items": null, #ItemManager.get_some_items()
+		"items": ItemManager.get_some_items()
 	}
 	if (x==0 && y==0):
 		room_data.doors["up"] = create_one_door(x,y,x+0,y-1)
