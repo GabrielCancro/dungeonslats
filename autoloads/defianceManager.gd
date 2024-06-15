@@ -1,16 +1,16 @@
 extends Node
 
 var DEFIANCES = {
-	"enemy":{"damage":2, "action_amount":3, "action_name":"attack", "action_req":{"SW":1} },
-	"trap": {"damage":1, "action_amount":1,  "action_name":"dissarm", "action_req":{"GR":2} },
-	"chest":{"action_amount":2, "action_name":"unlock", "action_req":{"GR":1} }
+	"goblin":{"type":"enemy", "damage":2, "action_amount":3, "action_name":"attack", "action_req":{"SW":1} },
+	"trap1": {"type":"trap", "damage":1, "action_amount":1,  "action_name":"dissarm", "action_req":{"GR":2} },
+	"chest1":{"type":"chest", "action_amount":2, "action_name":"unlock", "action_req":{"GR":1} }
 }
 
 signal end_defiance_effect
 
-func get_defiance(type):
-	var def = DEFIANCES[type].duplicate(true)
-	def["type"] = type
+func get_defiance(code):
+	var def = DEFIANCES[code].duplicate(true)
+	def["code"] = code
 	def["node_ref"] = null
 	return def
 

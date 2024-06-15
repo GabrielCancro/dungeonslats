@@ -6,7 +6,7 @@ func set_data(_data,room_data):
 	defiance_data = _data
 	defiance_data["node_ref"] = self
 	defiance_data["room_data"]  = room_data
-	$Sprite.texture = load("res://assets/room/def_"+defiance_data["type"]+".png")
+	$Sprite.texture = load("res://assets/defiances/df_"+defiance_data["code"]+".png")
 	
 	$Action/Button.connect("mouse_entered",self,"on_mouse_enter_action_area",[true])
 	$Action/Button.connect("mouse_exited",self,"on_mouse_enter_action_area",[false])
