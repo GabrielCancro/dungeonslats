@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Dungeonslats"
-run/main_scene="res://scenes/Game.tscn"
+run/main_scene="res://scenes/Mockup.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -29,7 +29,7 @@ Lang="*res://autoloads/lang.gd"
 
 window/size/width=800
 window/size/height=450
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [gui]
